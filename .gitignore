@@ -1,0 +1,42 @@
+# Terraform provider plugins and downloaded modules
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# State lock information
+.terraform.tfstate.lock.info
+
+# Terraform plan files
+*.tfplan
+tfplan
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files - may contain passwords, keys or other secrets
+*.tfvars
+*.tfvars.json
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
+
+# Environment variables / credentials
+.env
+.env.*
+!.env.example
+
+# Operating system / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
