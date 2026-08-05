@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Προσωπική σελίδα παρουσίασης και σύνδεσμος προς το βιογραφικό μου." />
+  <title>My CV</title>
+
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: rgba(255, 255, 255, 0.82);
+      --text: #172033;
+      --muted: #687386;
+      --primary: #5b5ce2;
+      --primary-dark: #4445bd;
+      --border: rgba(23, 32, 51, 0.09);
+      --shadow: 0 24px 70px rgba(31, 42, 68, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(91, 92, 226, 0.20), transparent 32%),
+        radial-gradient(circle at 90% 85%, rgba(67, 194, 158, 0.18), transparent 28%),
+        var(--bg);
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      overflow-x: hidden;
+    }
+
+    .blob {
+      position: fixed;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: 0.28;
+      z-index: -1;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .blob.one {
+      top: -80px;
+      right: -60px;
+      background: #7475ff;
+    }
+
+    .blob.two {
+      bottom: -90px;
+      left: -70px;
+      background: #53d6b2;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(18px) scale(1.05); }
+    }
+
+    .card {
+      width: min(880px, 100%);
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #32c48d;
+      box-shadow: 0 0 0 5px rgba(50, 196, 141, 0.13);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 38px;
+      align-items: center;
+      padding: 68px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(91, 92, 226, 0.10);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.84rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .accent {
+      color: var(--primary);
+    }
+
+    .intro {
+      max-width: 580px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 15px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #7778ff);
+      box-shadow: 0 14px 30px rgba(91, 92, 226, 0.28);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 18px 38px rgba(91, 92, 226, 0.36);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.72);
+      border-color: var(--border);
+    }
+
+    .profile {
+      position: relative;
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+    }
+
+    .portrait {
+      width: 230px;
+      aspect-ratio: 1;
+      border-radius: 32px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.15)),
+        linear-gradient(135deg, #5b5ce2, #50c9a7);
+      color: white;
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      transform: rotate(3deg);
+      box-shadow: 0 24px 50px rgba(49, 60, 98, 0.24);
+      user-select: none;
+    }
+
+    .mini-card {
+      position: absolute;
+      left: 0;
+      bottom: 12px;
+      width: 190px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 30px rgba(31, 42, 68, 0.14);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      padding: 20px 28px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 42px 26px;
+      }
+
+      .profile {
+        min-height: 250px;
+      }
+
+      .portrait {
+        width: 190px;
+      }
+
+      .mini-card {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+      }
+
+      .topbar {
+        padding: 18px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 14px;
+      }
+
+      .card {
+        border-radius: 22px;
+      }
+
+      .hero {
+        padding: 36px 20px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .status {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+
+  <main class="card">
+    <header class="topbar">
+      <div class="brand">Kyriakos Kardabikis</div>
+      <div class="status">
+        <span class="dot"></span>
+        Ready To Explore New Opportunities 
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Welcome to my website hosted at S3</span>
+
+        <h1>
+          Hello, im <br />
+          <span class="accent">Kyriakos Kardabikis</span>
+        </h1>
+
+        <p class="intro">
+          Junior DevOps/Cloud Engineer with hands-on experience in containerization, CI/CD automation, and infrastructure
+
+           provisioning using Docker, Jenkins, and Ansible. Currently working as an MLOps Engineer Researcher on a Kubernetes-
+            based multi-tenant AI platform, building CI/CD pipelines and automation tooling in Python. Informatics & Telematics
+
+            student at Harokopio University (GPA 8.7/10). Comfortable working independently and within a team to design and
+            implement infrastructure solutions.
+        </p>
+
+        <div class="actions">
+          <a
+            id="cvLink"
+            class="btn btn-primary"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View CV
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <a class="btn btn-secondary" href="mailto:kyriakoskardampikis2005@gmail.com">
+            Contact
+          </a>
+        </div>
+      </div>
+
+      <aside class="profile" aria-label="Προφίλ">
+        <div class="portrait">YN</div>
+
+        <div class="mini-card">
+          <strong>My Role</strong>
+          <span>DevOps-Cloud Engineer</span>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      © <span id="year"></span>Kyriakos Kardabikis
+    </footer>
+  </main>
+
+  <script>
+    /*
+      ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΟΥ CV ΣΟΥ.
+      Παράδειγμα:
+      const CV_URL = "https://drive.google.com/...";
+    */
+    const CV_URL = "https://drive.google.com/file/d/1vJlUKN2Gm5rShnJhVw6kZZCySXBwxQ7q/view?usp=drive_link";
+
+    const cvLink = document.getElementById("cvLink");
+    cvLink.href = CV_URL;
+
+    cvLink.addEventListener("click", function (event) {
+      if (
+        !CV_URL ||
+        CV_URL === "ΒΑΛΕ_ΕΔΩ_ΤΟ_LINK_ΤΟΥ_CV" ||
+        !/^https?:\/\//i.test(CV_URL)
+      ) {
+        event.preventDefault();
+        alert("Βάλε πρώτα το link του CV σου στη μεταβλητή CV_URL, στο τέλος του αρχείου.");
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
